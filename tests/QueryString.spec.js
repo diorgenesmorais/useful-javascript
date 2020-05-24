@@ -1,5 +1,5 @@
 const expect = require('chai').expect;
-const QueryString = require('../src/queryString');
+const QueryString = require('../src/QueryString');
 
 describe('QueryString tests', () => {
     const useful = new QueryString();
