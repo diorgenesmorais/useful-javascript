@@ -1,4 +1,4 @@
-const queryString = function() {
+const QueryString = function() {
     /**
      * Converter payload para uma queryString.
      * 
@@ -42,4 +42,4 @@ const queryString = function() {
     }
 }
 
-module.exports = queryString;
+module.exports = QueryString;
