@@ -1,8 +1,8 @@
 const expect = require('chai').expect;
-const QueryString = require('../src/QueryString');
+const createQueryString = require('../src/QueryString');
 
 describe('QueryString tests', () => {
-    const useful = new QueryString();
+    const useful = createQueryString();
 
     it('Should exists', () => {
         expect(useful).to.exist;

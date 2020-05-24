@@ -1,4 +1,5 @@
-const QueryString = function() {
+module.exports = function createQueryString() {
+    "use strict";
     /**
      * Converter payload para uma queryString.
      * 
@@ -58,5 +59,3 @@ const QueryString = function() {
         listOfJsonProperties
     }
 }
-
-module.exports = QueryString;
