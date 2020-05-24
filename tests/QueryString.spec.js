@@ -21,12 +21,28 @@ describe('QueryString tests', () => {
     });
 
     const query = useful.convertPayloadToQueryString(payload);
+    const array = useful.convertQueryStringToArray(query);
 
     it('Should get an array of the query string', () => {
-        const array = useful.convertQueryStringToArray(query);
         expect(array.nome).to.equal('Diorgenes Morais');
         expect(array.instalacao).to.equal('00124578');
         expect(array.cidade).to.equal('São Lourenço da Mata');
         expect(array.estado).to.equal('PE');
+    });
+
+    const myJson = {
+        payload,
+        lista: [
+            {x: 1},
+            {y: 2}
+        ],
+        cep: 54735275,
+        telefone: 981788471
+    }
+
+    it('Should be listed', () => {
+        const list = [];
+        useful.listOfJsonProperties(list, myJson);
+        expect(list.nome).to.equal('Diorgenes Morais');
     })
 });

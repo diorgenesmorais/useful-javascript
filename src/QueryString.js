@@ -36,9 +36,26 @@ const QueryString = function() {
         return array;
     }
 
+    /**
+     * Listar as propriedades do json.
+     * 
+     * @param {array} list 
+     * @param {object} json 
+     */
+    function listOfJsonProperties(list, json) {
+        for (const key in json) {
+            if (typeof json[key] !== 'object') {
+                list[key] = json[key];
+            } else {
+                listOfJsonProperties(list, json[key]);
+            }
+        }
+    }
+
     return {
         convertPayloadToQueryString,
-        convertQueryStringToArray
+        convertQueryStringToArray,
+        listOfJsonProperties
     }
 }
 
