@@ -16,7 +16,7 @@ module.exports = function createQueryString() {
      * Converter uma queryString para um Array.
      * 
      * @param {string} queryString (key=value&key=value&key=value)
-     * @returns {array} onde index vai ser a key.
+     * @returns {array} onde index vai ser a key - [key: value, key: value]
      */
     function convertQueryStringToArray(queryString) {
         const array = [];
@@ -38,28 +38,29 @@ module.exports = function createQueryString() {
     }
 
     /**
-     * Listar as propriedades do json.
+     * Converte em uma lista simples contendo na chave a propriedade.
      * 
-     * @param {object} json 
+     * @param {{}|[]} target Um json ou array
+     * @returns {[]} um array [property: value, property: value];
      */
-    function listOfJsonProperties(json) {
-        const list = [];
-        function listOfJson(json) {
-            for (const key in json) {
-                if (typeof json[key] !== 'object') {
-                    list[key] = json[key];
+    function convertToPropertyList(target) {
+        const listSimple = [];
+        function listOf(target) {
+            for (const key in target) {
+                if (typeof target[key] !== 'object') {
+                    listSimple[key] = target[key];
                 } else {
-                    listOfJson(json[key]);
+                    listOf(target[key]);
                 }
             }
         }
-        listOfJson(json);
-        return list;
+        listOf(target);
+        return listSimple;
     }
 
     return {
         convertPayloadToQueryString,
         convertQueryStringToArray,
-        listOfJsonProperties
+        convertToPropertyList
     }
 }

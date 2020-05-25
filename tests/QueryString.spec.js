@@ -41,7 +41,8 @@ describe('QueryString tests', () => {
     }
 
     it('Should be listed', () => {
-        const list = useful.listOfJsonProperties(myJson);
+        const list = useful.convertToPropertyList(myJson);
         expect(list.nome).to.equal('Diorgenes Morais');
-    })
+        expect(list.x).to.equal(1);
+    });
 });
