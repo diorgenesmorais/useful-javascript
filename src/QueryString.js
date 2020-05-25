@@ -3,7 +3,7 @@ module.exports = function createQueryString() {
     /**
      * Converter payload para uma queryString.
      * 
-     * @param {object} payload JSON
+     * @param {{string: string}} payload JSON
      * @returns {string} pares/valores (Chave=Valor&Chave=Valor...)
      */
     function convertPayloadToQueryString(payload) {
@@ -16,7 +16,7 @@ module.exports = function createQueryString() {
      * Converter uma queryString para um Array.
      * 
      * @param {string} queryString (key=value&key=value&key=value)
-     * @returns {array} onde index vai ser a key - [key: value, key: value]
+     * @returns {string[]} onde index vai ser a key - [key: value, key: value]
      */
     function convertQueryStringToArray(queryString) {
         const array = [];
