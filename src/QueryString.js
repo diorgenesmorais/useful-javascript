@@ -38,29 +38,29 @@ module.exports = function createQueryString() {
     }
 
     /**
-     * Converte em uma lista simples contendo na chave a propriedade.
+     * Decompor em object simples.
      * 
      * @param {{}|[]} target Um json ou array
-     * @returns {[]} um array [property: value, property: value];
+     * @returns {{string: string}}
      */
-    function convertToPropertyList(target) {
-        const listSimple = [];
+    function decomposeInSimpleObject(target) {
+        const simpleObject = {};
         function listOf(target) {
             for (const key in target) {
                 if (typeof target[key] !== 'object') {
-                    listSimple[key] = target[key];
+                    simpleObject[key] = target[key];
                 } else {
                     listOf(target[key]);
                 }
             }
         }
         listOf(target);
-        return listSimple;
+        return simpleObject;
     }
 
     return {
         convertPayloadToQueryString,
         convertQueryStringToArray,
-        convertToPropertyList
+        decomposeInSimpleObject
     }
 }

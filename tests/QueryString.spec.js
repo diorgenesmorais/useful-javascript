@@ -40,9 +40,9 @@ describe('QueryString tests', () => {
         telefone: 981788471
     }
 
-    it('Should be listed', () => {
-        const list = useful.convertToPropertyList(myJson);
-        expect(list.nome).to.equal('Diorgenes Morais');
-        expect(list.x).to.equal(1);
+    it('Should get a simple object', () => {
+        const simpleObject = useful.decomposeInSimpleObject(myJson);
+        expect(simpleObject.nome).to.equal('Diorgenes Morais');
+        expect(simpleObject.x).to.equal(1);
     });
 });
