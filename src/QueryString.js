@@ -13,13 +13,13 @@ module.exports = function createQueryString() {
     }
 
     /**
-     * Converter uma queryString para um Array.
+     * Converter uma queryString para um objeto.
      * 
      * @param {string} queryString (key=value&key=value&key=value)
-     * @returns {string[]} onde index vai ser a key - [key: value, key: value]
+     * @returns {{string:string}} {key: value, key: value}
      */
-    function convertQueryStringToArray(queryString) {
-        const array = [];
+    function convertQueryStringToObject(queryString) {
+        const json = {};
         queryString.split('')
             .map(letra => {
                 if (letra === '&') {
@@ -31,10 +31,10 @@ module.exports = function createQueryString() {
             .split('=') // retorna uma lista: ['key', 'value', 'key', 'value']
             .forEach((value, index, list) => {
                 if (index % 2 === 0) {
-                    array[value] = decodeURIComponent(list[index + 1]);
+                    json[value] = decodeURIComponent(list[index + 1]);
                 }
             });
-        return array;
+        return json;
     }
 
     /**
@@ -60,7 +60,7 @@ module.exports = function createQueryString() {
 
     return {
         convertPayloadToQueryString,
-        convertQueryStringToArray,
+        convertQueryStringToObject,
         decomposeInSimpleObject
     }
 }

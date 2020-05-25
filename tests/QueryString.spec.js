@@ -21,13 +21,13 @@ describe('QueryString tests', () => {
     });
 
     const query = useful.convertPayloadToQueryString(payload);
-    const array = useful.convertQueryStringToArray(query);
+    const json = useful.convertQueryStringToObject(query);
 
-    it('Should get an array of the query string', () => {
-        expect(array.nome).to.equal('Diorgenes Morais');
-        expect(array.instalacao).to.equal('00124578');
-        expect(array.cidade).to.equal('São Lourenço da Mata');
-        expect(array.estado).to.equal('PE');
+    it('Should get a json of the query string', () => {
+        expect(json.nome).to.equal('Diorgenes Morais');
+        expect(json.instalacao).to.equal('00124578');
+        expect(json.cidade).to.equal('São Lourenço da Mata');
+        expect(json.estado).to.equal('PE');
     });
 
     const myJson = {
@@ -39,7 +39,7 @@ describe('QueryString tests', () => {
         cep: 54735275,
         telefone: 981788471
     }
-
+json
     it('Should get a simple object', () => {
         const simpleObject = useful.decomposeInSimpleObject(myJson);
         expect(simpleObject.nome).to.equal('Diorgenes Morais');
