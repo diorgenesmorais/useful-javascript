@@ -39,7 +39,7 @@ describe('QueryString tests', () => {
         cep: 54735275,
         telefone: 981788471
     }
-json
+
     it('Should get a simple object', () => {
         const simpleObject = useful.decomposeInSimpleObject(myJson);
         expect(simpleObject.nome).to.equal('Diorgenes Morais');
